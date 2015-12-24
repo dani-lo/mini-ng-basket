@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="DaniDevBasket">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping basket test</title>
+    <link rel="stylesheet" href="public/basket.css">
+  </head>
+  <body>
+    <header id="page-header">
+      <h1>Shopping basket test</h1>
+    </header>
+    <div class="main">
+      <section class="shopping-basket basket"  ng-controller="ProductsBasketCtrl">
+        <header>
+          <h2>Basket</h2>
+        </header>
+        <div class="basket_detail loader" ng-class="{loaded: isloaded}">
+          <p><span>Total: {{basket.total}} items</span> - &pound; {{basket.price}}</p>
+          <button class="btn show-basket-products" ng-show="!isproducts" ng-click="showBasketProducts()">view</button>
+          <button class="btn show-basket-products" ng-show="isproducts" ng-click="hideBasketProducts()">hide</button>
+          <div class="basket_detail-products" ng-show="isproducts">
+            <h2 ng-show="!basket.products.length">No prodcucts yet ...</h2>
+            <div ng-repeat="item in basket.products">
+              <h3>{{item.name}}</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="products">
+        <header>
+          <h2>Products</h2>
+        </header>
+        <div class="products list loader"  ng-controller="ProductsListCtrl" ng-class="{loaded: isloaded}">
+          <div class="product list_item imgobj" ng-class="{zoom: uiready}"  ng-class-odd="'alt'" ng-repeat="item in products">
+            <div class="imgobj_img product_img">
+              <img ng-src="/public/images/{{item.thumbnail}}">
+            </div>
+            <div class="imgobj_text product_text">
+              <h3>{{item.name}}</h3>
+              <p>{{item.category}} - {{item.subcategory}}</p>
+              <p>{{item.price}}</p>
+              <button class="btn btn-add" ng-show="!item.inbasket" ng-click="itemToBasket(item.item_id)">add to basket</button>
+              <button class="btn btn-remove" ng-show="item.inbasket" ng-click="itemFromBasket(item.item_id)">remove from basket</button>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="public/basket.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+form {
+	p {
+		input.set-param {
+			display: inline-block;
+		    /* margin-left: 160px; */
+		    position: absolute;
+		    left: 180px;
+		    width: 240px;
+		}
+		select {
+			display: inline-block;
+		    position: absolute;
+		    left: 180px;
+		    width: 240px;
+		}
+
+	}
+
+	input.send-data {
+		background-color: #B5B3B3;
+	    border: 1px solid #ddd;
+	    padding: 12px 40px;
+	    margin: 12px 0;
+	    color: #fff;
+	}
+
+	&.form-dyn {
+		opacity: 0;
+
+	}
+
+}
+.form-container {
+	padding: 50px 0;
+}
+
+.ng-scope form.form-dyn {
+	opacity: 1;
+}
+/******/
+
+.simple-form input.ng-invalid.ng-touched {
+	background-color: #FA787E;
+}
+
+.simple-form input.ng-valid.ng-touched {
+	background-color: #78FA89;
+}
